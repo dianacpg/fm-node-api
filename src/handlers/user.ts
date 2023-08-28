@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import prisma from "../db";
 import { comparePasswords, createJWT, hashPassword } from "../modules/auth";
-import { CustomError } from "../utils/custom-error";
 
 export const createNewUser = async (
   req: Request,
