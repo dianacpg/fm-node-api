@@ -18,11 +18,10 @@ app.use("/api", protect, router);
 app.post("/user", createNewUser);
 app.post("/signin", signin);
 
-app.use((err: CustomError, req: Request, res: Response) => {
-  const errorType = err.getType();
-  if (errorType === "auth") {
+app.use((err: CustomError, req: Request, res: Response, next: NextFunction) => {
+  if (err.type === "auth") {
     res.status(401).json({ message: "unauthorized" });
-  } else if (errorType === "input") {
+  } else if (err.type === "input") {
     res.status(400).json({ message: "invalid input" });
   } else {
     res.status(500).json({ message: "ups, that's on us" });

@@ -18,8 +18,8 @@ export const createNewUser = async (
     const token = createJWT(user);
     res.json({ token });
   } catch (e) {
-    const customError = new CustomError((e as Error).message, "input");
-    next(customError);
+    e.type = "input";
+    next(e);
   }
 };
 

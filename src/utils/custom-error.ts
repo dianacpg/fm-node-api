@@ -1,10 +1,5 @@
 export class CustomError extends Error {
-  constructor(message: string, private type: string) {
+  constructor(message: string, public type: string) {
     super(message);
-    this.name = "CustomError";
-  }
-
-  getType(): string {
-    return this.type;
   }
 }
